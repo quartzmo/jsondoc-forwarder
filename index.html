@@ -1,0 +1,11 @@
+<html>
+<body>
+JsondocForwarder Test Page
+<script src="jsondoc-forwarder.js"></script>
+<script>
+  var forwarder = new JsondocForwarder(null, "", "https://googlecloudplatform.github.io/google-cloud-ruby", {});
+  var forwardUrl = forwarder.resolve(window.location.href);
+  window.location.href = forwardUrl;
+</script>
+</body>
+</html>
