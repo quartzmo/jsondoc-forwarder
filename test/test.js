@@ -112,7 +112,7 @@ describe('JsondocForwarder', function() {
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/v1.7.1/Google/Cloud#bigquery-class_method");
     });
 
-    it('should convert query strings to anchors for sections', function() {
+    it('should convert query strings for sections to gem root module which links to OVERVIEW.md', function() {
       var url = baseUrl + "/#/docs/google-cloud-bigquery/v1.7.1/google/cloud/bigquery?section=query-jobs";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/v1.7.1/Google/Cloud/Bigquery");
     });
