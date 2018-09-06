@@ -122,9 +122,29 @@ describe('JsondocForwarder', function() {
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/v1.7.1");
     });
 
-    it('should convert all guides to /gem/version', function() {
+    it('should convert all versioned guides to /gem/version', function() {
       var url = baseUrl + "/#/docs/google-cloud-error_reporting/v0.30.2/guides/instrumentation";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-error_reporting/v0.30.2");
+    });
+
+    it('should convert all master guides to /gem/version', function() {
+      var url = baseUrl + "/#/docs/google-cloud-bigquery/master/guides/authentication";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/master/file.AUTHENTICATION");
+    });
+
+    it('should convert all latest guides to /gem/version', function() {
+      var url = baseUrl + "/#/docs/google-cloud-bigquery/latest/guides/authentication";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/latest/file.AUTHENTICATION");
+    });
+
+    it('should convert all unversioned guides to /gem/version', function() {
+      var url = baseUrl + "/#/docs/google-cloud-bigquery/guides/authentication";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/latest/file.AUTHENTICATION");
+    });
+
+    it('should convert ONLY root guides/authentication guide to /docs/authentication', function() {
+      var url = baseUrl + "/#/docs/guides/authentication";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/authentication");
     });
   });
 });
