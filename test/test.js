@@ -127,17 +127,17 @@ describe('JsondocForwarder', function() {
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-error_reporting/v0.30.2");
     });
 
-    it('should convert all master guides to /gem/version', function() {
+    it('should convert all master guides to /master/file.', function() {
       var url = baseUrl + "/#/docs/google-cloud-bigquery/master/guides/authentication";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/master/file.AUTHENTICATION");
     });
 
-    it('should convert all latest guides to /gem/version', function() {
+    it('should convert all latest guides to /latest/file.', function() {
       var url = baseUrl + "/#/docs/google-cloud-bigquery/latest/guides/authentication";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/latest/file.AUTHENTICATION");
     });
 
-    it('should convert all unversioned guides to /gem/version', function() {
+    it('should convert all unversioned guides to /latest/file.', function() {
       var url = baseUrl + "/#/docs/google-cloud-bigquery/guides/authentication";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-bigquery/latest/file.AUTHENTICATION");
     });
@@ -145,6 +145,71 @@ describe('JsondocForwarder', function() {
     it('should convert ONLY root guides/authentication guide to /docs/authentication', function() {
       var url = baseUrl + "/#/docs/guides/authentication";
       assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/authentication");
+    });
+
+    it('should convert stackdriver/master/guides/instrumentation_configuration to /docs/stackdriver/master/guides/file.INSTRUMENTATION_CONFIGURATION', function() {
+      var url = baseUrl + "/#/docs/stackdriver/master/guides/instrumentation_configuration";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/stackdriver/master/file.INSTRUMENTATION_CONFIGURATION");
+    });
+
+    it('should convert stackdriver/master/guides/debugger_instrumentation to debugger/master/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/master/guides/debugger_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-debugger/master/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/master/guides/error_reporting_instrumentation to error_reporting/master/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/master/guides/error_reporting_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-error_reporting/master/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/master/guides/logging_instrumentation to logging/master/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/master/guides/logging_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-logging/master/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/master/guides/trace_instrumentation to trace/master/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/master/guides/trace_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-trace/master/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/latest/guides/debugger_instrumentation to debugger/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/latest/guides/debugger_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-debugger/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/latest/guides/error_reporting_instrumentation to error_reporting/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/latest/guides/error_reporting_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-error_reporting/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/latest/guides/logging_instrumentation to logging/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/latest/guides/logging_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-logging/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/latest/guides/trace_instrumentation to trace/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/latest/guides/trace_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-trace/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/guides/debugger_instrumentation to debugger/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/guides/debugger_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-debugger/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/guides/error_reporting_instrumentation to error_reporting/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/guides/error_reporting_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-error_reporting/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/guides/logging_instrumentation to logging/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/guides/logging_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-logging/latest/file.INSTRUMENTATION");
+    });
+
+    it('should convert stackdriver/guides/trace_instrumentation to trace/latest/guides/instrumentation', function() {
+      var url = baseUrl + "/#/docs/stackdriver/guides/trace_instrumentation";
+      assert.equal(this.forwarder.resolve(url), baseUrl + "/docs/google-cloud-trace/latest/file.INSTRUMENTATION");
     });
   });
 });
